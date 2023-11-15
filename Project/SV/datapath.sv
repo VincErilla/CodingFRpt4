@@ -155,6 +155,20 @@ module rules (pop_count, current_state, next_state);
 endmodule // rules
 
 
+module FSM (pause);
+   input logic pause;
+   input logic reset;
 
+
+endmodule
+
+module New_Datapath ();
+logic [63:0] grid;
+logic [63:0] grid_evolve;
+datapath D1 (grid, grid_evolve);
+
+
+
+endmodule
 
 
