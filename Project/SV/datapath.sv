@@ -154,43 +154,17 @@ module rules (pop_count, current_state, next_state);
    
 endmodule // rules
 
-
-module FSM (reset, en, grid);
-   input logic clk
-   input logic reset;
-   input logic en;
-   logic [63:0] grid;
-   output logic grid_evolve;
-
-flopenr #(64)f1 (clk, reset, en);
-
-typedef enum 	logic {S0} statetype;
-   statetype state, nextstate;
-always_ff @(posedge clk, posedge reset)
-     if (reset) state <= S0;
-     else state <= nextstate;
-    
-     always_comb
-     case (state)
-       S0: begin
-          grid_evolve <= grid;
-       end
-     endcase
-
-
-
-endmodule
-
-module New_Datapath ();
-logic [63:0] grid;
-logic [63:0] grid_evolve;
-datapath D1 (grid, grid_evolve);
+module New_Datapath (grid, grid_evolve, reset, outputY);
+input logic [63:0] grid;
+input logic [63:0] grid_evolve;
+input logic inputX;
+output logic [63:0] outputY;
 
 always_ff @(posedge clk)
 
-mux2 #(64) m1(grid, grid_evolve ,inputX , outputY)
+mux2 #(64) m1(grid, grid_evolve, inputX , outputY)
 
-
+datapath d1(outputY)
 
 endmodule
 

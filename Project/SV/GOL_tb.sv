@@ -5,14 +5,17 @@ module stimulus;
    logic vector1, vector2, vector3, vector4, vector5, vector6, vector7, vector8;
    logic 	 clk;
    logic en;
+   logic reset;
+   logic [63:0] grid_evolve
 
      
-   
+   assign grid = 64'h0412_6424_0034_3C28;
   
 
-   DES datapath(grid);
+   DES datapath(grid, grid_evolve);
+   DES FSM(clk, reset);
+   DES New_Datapath(grid, grid_evolve, reset, outputY);
 
-   assign grid = 64'h0412_6424_0034_3C28;
 
    // 1 ns clock
    initial 
