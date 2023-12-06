@@ -154,17 +154,18 @@ module rules (pop_count, current_state, next_state);
    
 endmodule // rules
 
-module New_Datapath (grid, grid_evolve, reset, outputY);
+module New_Datapath (grid, grid_evolve, reset, outputY, clk);
 input logic [63:0] grid;
 input logic [63:0] grid_evolve;
-input logic inputX;
+input logic reset;
+input logic clk;
 output logic [63:0] outputY;
 
-always_ff @(posedge clk)
+FSM sw(clk, reset, en, rst);
+datapath dp(.grid(grid), .grid_evolve(grid_evolve));
+flopenr #(64)f1 (.clk(clk), .reset(rst), .en(en),.d(grid_evolve), .q(q));
+mux2 #(64) m1(.d1(grid), .d0(d), .s(rst) ,.y(outputY));l
 
-mux2 #(64) m1(grid, grid_evolve, inputX , outputY)
-
-datapath d1(outputY)
 
 endmodule
 
