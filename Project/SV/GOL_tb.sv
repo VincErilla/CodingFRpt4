@@ -1,10 +1,10 @@
 `timescale 1ns/1ps
 module stimulus;
 
-   logic [63:0] grid;
+   logic [255:0] grid;
    logic 	 clk;
    logic reset;
-   logic [63:0] grid_evolve
+   logic [255:0] grid_evolve
 
      
    assign grid = 64'h0412_6424_0034_3C28;
