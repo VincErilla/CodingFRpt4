@@ -1,37 +1,37 @@
 
 
 module FSM (clk, reset, en, rst);
-   input logic clk
+   input logic clk;
    input logic reset;
    output logic en;
    output logic rst;
 
-typedef enum 	[2.0] logic {S0, S1, S2} statetype;
+typedef enum logic [2:0]  {S0, S1, S2} statetype;
    statetype state, nextstate;
 always_ff @(posedge clk, posedge reset)
      if (reset) state <= S0;
-     else state <= next_state;
+     else state <= nextstate;
      
      always_comb
      case (state)
        S0: begin
-         rst = 1
-          en = 0;
-          if (reset) next_state <= S0;
-          else (en) next_state <= S1;
+         rst = 1'b1;
+          en = 1'b0;
+          if (reset) nextstate <= S0;
+          else if (en) nextstate <= S1;
        end
        S1: begin
-         rst = 0;
-         en = 1;
-         if (reset) next_state <= S0;
-         else if (en = 0) next_state <= S2;
+         rst = 1'b0;
+         en = 1'b1;
+         if (reset) nextstate <= S0;
+         else if (en == 1'b0) nextstate <= S2;
        end
        S2: begin
-         rst = 0;
-        en = 0;
-        if (reset) next_state <= S0;
-        else if (en) next_state <= S1;
-        else next_state <= S2;
+         rst = 1'b0;
+        en = 1'b0;
+        if (reset) nextstate <= S0;
+        else if (en) nextstate <= S1;
+        else nextstate <= S2;
        end
      endcase
 

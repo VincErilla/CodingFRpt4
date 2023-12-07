@@ -53,9 +53,13 @@ module top_demo
   logic [16:0] CURRENT_COUNT;
   logic [16:0] NEXT_COUNT;
   logic        smol_clk;
+  logic [255:0] grid;
+  logic [255:0] q;
+  logic reset;
+  logic clk;
    
   // Place Conway Game of Life instantiation here
- 
+ New_Datapath dp2(grid, reset, clk, q);
   // HDMI
   // logic hdmi_out_en;
   //assign hdmi_out_en = 1'b0;
