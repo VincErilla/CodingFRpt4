@@ -1,8 +1,8 @@
-Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
-----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date             : Fri Nov 11 14:44:25 2022
-| Host             : rerra-Precision-7865-Tower running 64-bit Ubuntu 22.04.1 LTS
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version     : Vivado v.2023.1.1 (win64) Build 3900603 Fri Jun 16 19:31:24 MDT 2023
+| Date             : Fri Dec  8 18:09:27 2023
+| Host             : CEAT-ENDV350-06 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_demo_power_routed.rpt -pb top_demo_power_summary_routed.pb -rpx top_demo_power_routed.rpx
 | Design           : top_demo
 | Device           : xc7z020clg484-1
@@ -10,7 +10,7 @@ Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 | Grade            : commercial
 | Process          : typical
 | Characterization : Production
-----------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Power Report
 
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 51.217 (Junction temp exceeded!) |
+| Total On-Chip Power (W)  | 45.851 (Junction temp exceeded!) |
 | Design Power Budget (W)  | Unspecified*                     |
 | Power Budget Margin (W)  | NA                               |
-| Dynamic (W)              | 50.176                           |
+| Dynamic (W)              | 44.810                           |
 | Device Static (W)        | 1.041                            |
 | Effective TJA (C/W)      | 11.5                             |
 | Max Ambient (C)          | 0.0                              |
@@ -52,18 +52,18 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     3.889 |     1303 |       --- |             --- |
-|   LUT as Logic |     3.682 |      697 |     53200 |            1.31 |
-|   Register     |     0.126 |      322 |    106400 |            0.30 |
-|   CARRY4       |     0.035 |       19 |     13300 |            0.14 |
+| Slice Logic    |     2.226 |     3317 |       --- |             --- |
+|   LUT as Logic |     2.049 |     2046 |     53200 |            3.85 |
+|   Register     |     0.085 |      515 |    106400 |            0.48 |
+|   CARRY4       |     0.047 |       20 |     13300 |            0.15 |
 |   BUFG         |     0.029 |        5 |        32 |           15.63 |
-|   F7/F8 Muxes  |     0.017 |       14 |     53200 |            0.03 |
-|   Others       |     0.000 |       32 |       --- |             --- |
-| Signals        |     3.696 |     1065 |       --- |             --- |
+|   F7/F8 Muxes  |     0.016 |       13 |     53200 |            0.02 |
+|   Others       |     0.000 |       29 |       --- |             --- |
+| Signals        |     2.468 |     2901 |       --- |             --- |
 | MMCM           |     3.367 |        1 |         4 |           25.00 |
-| I/O            |    39.225 |       41 |       200 |           20.50 |
+| I/O            |    36.749 |       41 |       200 |           20.50 |
 | Static Power   |     1.041 |          |           |                 |
-| Total          |    51.217 |          |           |                 |
+| Total          |    45.851 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     8.484 |       8.186 |      0.299 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     3.514 |       3.414 |      0.100 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |    10.863 |      10.862 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     5.514 |       5.216 |      0.299 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     3.345 |       3.245 |      0.100 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |    10.229 |      10.228 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -147,21 +147,20 @@ Table of Contents
 +-----------------------------------------+-----------+
 | Name                                    | Power (W) |
 +-----------------------------------------+-----------+
-| top_demo                                |    50.176 |
-|   driver                                |     1.107 |
-|   game                                  |     3.458 |
-|     fm                                  |     0.315 |
-|     rges                                |     3.143 |
-|   slowclk                               |     0.080 |
-|   test                                  |     9.701 |
-|     hdmi                                |     2.511 |
-|       serializer                        |     0.151 |
-|       tmds_gen[0].tmds_channel          |     0.193 |
-|       tmds_gen[1].tmds_channel          |     0.161 |
-|       tmds_gen[2].tmds_channel          |     0.147 |
-|       true_hdmi_output.packet_assembler |     0.284 |
-|       true_hdmi_output.packet_picker    |     0.784 |
-|     hdmi_pll                            |     3.419 |
+| top_demo                                |    44.810 |
+|   clk1                                  |     0.084 |
+|   dp2                                   |     0.352 |
+|     f1                                  |     0.352 |
+|   driver                                |     0.972 |
+|   test                                  |     8.401 |
+|     hdmi                                |     2.875 |
+|       serializer                        |     0.071 |
+|       tmds_gen[0].tmds_channel          |     0.204 |
+|       tmds_gen[1].tmds_channel          |     0.086 |
+|       tmds_gen[2].tmds_channel          |     0.113 |
+|       true_hdmi_output.packet_assembler |     0.290 |
+|       true_hdmi_output.packet_picker    |     0.747 |
+|     hdmi_pll                            |     3.422 |
 +-----------------------------------------+-----------+
 
 

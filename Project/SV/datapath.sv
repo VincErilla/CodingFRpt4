@@ -378,11 +378,12 @@ input logic reset;
 input logic clk;
 output logic [255:0] q;
 logic [255:0] grid_evolve;
+logic [255:0] y;
 
-FSM sw(clk, reset, en, rst);
-mux2 #(256) m1(.d1(grid), .d0(q), .s(rst), .y(outputY));
-datapath dp(.grid(outputY), .grid_evolve(grid_evolve));
-flopenr #(256)f1 (.clk(clk), .reset(rst), .en(en), .d(grid_evolve), .q(q));
+FSM sw(clk, reset, en);
+mux2 #(256) m1(.d1(grid), .d0(q), .s(reset), .y(y));
+datapath dp(.grid(y), .grid_evolve(grid_evolve));
+flopenr #(256)f1 (.clk(clk), .reset(reset), .en(en), .grid(grid), .d(grid_evolve), .q(q));
 
 
 

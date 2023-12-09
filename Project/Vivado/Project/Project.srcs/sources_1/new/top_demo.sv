@@ -57,9 +57,14 @@ module top_demo
   logic [255:0] q;
   logic reset;
   logic clk;
-   
+  logic [255:0] n2;
+  assign grid = 256'h3410b5a72c035ff7024fa719a9c1e6ab6fc5e3fbf523c1f9d298323e702e03c8;
+  
+   assign reset = btn[0];
   // Place Conway Game of Life instantiation here
+  clk_div clk1(sysclk_125mhz, btn[3], clk);
  New_Datapath dp2(grid, reset, clk, q);
+ assign n2 = q;
   // HDMI
   // logic hdmi_out_en;
   //assign hdmi_out_en = 1'b0;

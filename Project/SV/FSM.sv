@@ -15,19 +15,16 @@ always_ff @(posedge clk, posedge reset)
      always_comb
      case (state)
        S0: begin
-         rst = 1'b1;
-          en = 1'b0;
+          en = 1'b1;
           if (reset) nextstate <= S0;
-          else if (en) nextstate <= S1;
+          else nextstate <= S1;
        end
        S1: begin
-         rst = 1'b0;
          en = 1'b1;
          if (reset) nextstate <= S0;
-         else if (en == 1'b0) nextstate <= S2;
+         else nextstate <= S1;
        end
        S2: begin
-         rst = 1'b0;
         en = 1'b0;
         if (reset) nextstate <= S0;
         else if (en) nextstate <= S1;
